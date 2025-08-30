@@ -1,8 +1,5 @@
-from .game_version import *
-from .pack_meta import *
-from .utils import *
+from .game_version import GameVersion
+from .pack_meta import PackMeta
+from . import utils  # keep utils as a submodule
 
-__all__ = []
-__all__ += game_version.__all__
-__all__ += pack_meta.__all__
-__all__ += utils.__all__
+__all__ = ["GameVersion", "PackMeta", "utils"]

@@ -1,6 +1,4 @@
-from .internal import *
-from .datapack import *
+from .datapack import DataPack
+from . import internal
 
-__all__ = []
-__all__ += internal.__all__
-__all__ += datapack.__all__
+__all__ = ["DataPack", "internal"]  # only show top-level things

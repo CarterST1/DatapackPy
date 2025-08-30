@@ -1,17 +1,15 @@
-from datapackpy.datapack import DataPack
-from datapackpy.internal.game_version import GameVersion
-import datapackpy.internal.utils as utils
+import datapackpy
 
-print(utils.convertFromResourceLocation('minecraft/villager'))
+print(datapackpy.internal.utils.convertFromResourceLocation('minecraft/villager'))
 
-print(utils.formatWithNamespace('minecraft', 'test'))
-print(utils.formatWithNamespace('Minecraft', 'test'))
-print(utils.getPackFormatRange(80))
-print(GameVersion.fromTuple((1, 19)))
+print(datapackpy.internal.utils.formatWithNamespace('minecraft', 'test'))
+print(datapackpy.internal.utils.formatWithNamespace('Minecraft', 'test'))
+print(datapackpy.internal.utils.getPackFormatRange(80))
+print(datapackpy.internal.GameVersion.fromTuple((1, 19)))
 
-print(utils.getPackFormatId(GameVersion.fromTuple((1, 21, 9))))
+print(datapackpy.internal.utils.getPackFormatId(datapackpy.internal.GameVersion.fromTuple((1, 21, 9))))
 
-dataPack = DataPack((1, 21, 1), 'cartermods', 'cst')
+dataPack = datapackpy.DataPack((1, 21, 1), 'cartermods', 'cst')
 print(dataPack)
 
 print(dataPack.meta.toJson())
