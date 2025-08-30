@@ -29,7 +29,6 @@ class DataPack:
         pack_dir = Path(dist_dir / self.name)
         pack_dir.mkdir()
 
-        mcMeta = Path(pack_dir / 'pack.mcmeta')
-        mcMeta.write_text(self.meta.toJson())
+        self.meta.createMetaFile(pack_dir)
 
         # Do other stuff

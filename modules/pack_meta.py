@@ -1,4 +1,5 @@
 from __future__ import annotations
+from pathlib import Path
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -33,3 +34,7 @@ class PackMeta:
         }
         jsonDict = json.dumps(rawDict, indent=2)
         return jsonDict
+    
+    def createMetaFile(self, pack_dir: Path):
+        mcMeta = Path(pack_dir / 'pack.mcmeta')
+        mcMeta.write_text(self.toJson())
