@@ -34,3 +34,6 @@ class DataPack:
         # Do other stuff
 
         return pack_dir
+    
+    def set_meta(self, meta: PackMeta):
+        self.meta = meta
