@@ -1,3 +1,6 @@
+"""Contains utilities used by the datapack system"""
+from modules.game_version import GameVersion
+
 
 LEGAL_CHARS = '0123456789abcdefghijklmnopqrstuvwxyz_.'
 
@@ -73,3 +76,13 @@ def getPackFormatRange(formatNumber: int):
         return version.get('minimum', (1, 21, 8)), version.get('minimum', (1, 21, 8))
     else:
         return None
+    
+def getPackFormatId(version: GameVersion):
+    for id, formatRange in PACK_VERSIONS.items():
+        minimum = GameVersion.fromTuple(formatRange['minimum'])
+        maximum = GameVersion.fromTuple(formatRange['maximum'])
+
+        if (version <= maximum) and (version >= minimum):
+            return id
+        
+    return None

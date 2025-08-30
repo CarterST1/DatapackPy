@@ -1,5 +1,6 @@
 import pytest
-from modules.utils import LEGAL_CHARS, PACK_VERSIONS, convertFromResourceLocation, getPackFormatRange, isLegalChar, isValidToConvert, formatWithNamespace
+from modules.game_version import GameVersion
+from modules.utils import LEGAL_CHARS, PACK_VERSIONS, convertFromResourceLocation, getPackFormatId, getPackFormatRange, isLegalChar, isValidToConvert, formatWithNamespace
 
 def test_isLegalChar():
     for char in LEGAL_CHARS:
@@ -28,3 +29,7 @@ def test_convertFromResourceLocation():
 def test_getPackFormatRange():
     assert getPackFormatRange(85) == ((1, 21, 9), (1, 21, 9))
     assert getPackFormatRange(99) == None
+
+def test_getPackFormatId():
+    assert getPackFormatId(GameVersion.fromTuple((1, 21, 8))) == '81'
+    assert getPackFormatId(GameVersion.fromTuple((0, 2, 1))) == None

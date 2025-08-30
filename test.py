@@ -1,3 +1,4 @@
+from modules.datapack import DataPack
 from modules.game_version import GameVersion
 import modules.utils as utils
 
@@ -7,3 +8,8 @@ print(utils.formatWithNamespace('minecraft', 'test'))
 print(utils.formatWithNamespace('Minecraft', 'test'))
 print(utils.getPackFormatRange(80))
 print(GameVersion.fromTuple((1, 19)))
+
+print(utils.getPackFormatId(GameVersion.fromTuple((1, 21, 9))))
+
+dataPack = DataPack((1, 21, 1), 'cst')
+print(dataPack)
