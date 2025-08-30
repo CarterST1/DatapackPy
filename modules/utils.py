@@ -1,5 +1,3 @@
-from typing import overload
-
 
 LEGAL_CHARS = '0123456789abcdefghijklmnopqrstuvwxyz_.'
 
