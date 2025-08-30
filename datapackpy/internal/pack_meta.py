@@ -2,6 +2,8 @@ from __future__ import annotations
 from pathlib import Path
 from typing import TYPE_CHECKING
 
+__all__ = ['PackMeta']
+
 if TYPE_CHECKING:
     from datapackpy.datapack import DataPack
 
@@ -39,5 +41,3 @@ class PackMeta:
         mcMeta = Path(pack_dir / 'pack.mcmeta')
         mcMeta.write_text(self.toJson())
         return mcMeta
-    
-__all__ = ['PackMeta']

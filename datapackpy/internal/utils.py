@@ -2,6 +2,19 @@
 from typing import TypeAlias
 from datapackpy.internal.game_version import GameVersion
 
+__all__ = [
+    'Version',
+    'LEGAL_CHARS',
+    'isLegalChar',
+    'isValidToConvert',
+    'formatWithNamespace',
+    'convertFromResourceLocation',
+    'PACK_VERSIONS',
+    'getPackFormatRange',
+    'getPackFormatId',
+    'slugify'
+]
+
 Version: TypeAlias = GameVersion | tuple[int, int, int] | tuple[int, int]
 
 LEGAL_CHARS = '0123456789abcdefghijklmnopqrstuvwxyz_.'
@@ -91,16 +104,3 @@ def getPackFormatId(version: GameVersion):
 
 def slugify(data: str) -> str:
     return data.lower().replace(" ", "_")
-
-__all__ = [
-    'Version',
-    'LEGAL_CHARS',
-    'isLegalChar',
-    'isValidToConvert',
-    'formatWithNamespace',
-    'convertFromResourceLocation',
-    'PACK_VERSIONS',
-    'getPackFormatRange',
-    'getPackFormatId',
-    'slugify'
-]

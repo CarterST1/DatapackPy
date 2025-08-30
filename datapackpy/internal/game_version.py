@@ -1,6 +1,7 @@
 from functools import total_ordering
 from typing import overload
 
+__all__ = ['GameVersion']
 
 @total_ordering  # fills in >=, <=, != automatically
 class GameVersion:
@@ -45,4 +46,3 @@ class GameVersion:
             return NotImplemented
         return (self.major, self.minor, self.patch) < (other.major, other.minor, other.patch)
     
-__all__ = ['GameVersion']

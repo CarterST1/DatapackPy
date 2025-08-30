@@ -5,6 +5,8 @@ from datapackpy.internal.game_version import GameVersion
 from datapackpy.internal import utils
 from datapackpy.internal.pack_meta import PackMeta
 
+__all__ = ['DataPack']
+
 class DataPack:
     """A collection of data used to configure a number of features of Minecraft"""
     def __init__(self, version: utils.Version, name: str, namespace: str) -> None:
@@ -37,5 +39,3 @@ class DataPack:
     
     def set_meta(self, meta: PackMeta):
         self.meta = meta
-
-__all__ = ['DataPack']
