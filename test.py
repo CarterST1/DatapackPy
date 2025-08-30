@@ -11,5 +11,8 @@ print(GameVersion.fromTuple((1, 19)))
 
 print(utils.getPackFormatId(GameVersion.fromTuple((1, 21, 9))))
 
-dataPack = DataPack((1, 21, 1), 'cst')
+dataPack = DataPack((1, 21, 1), 'cartermods', 'cst')
 print(dataPack)
+
+print(dataPack.meta.toJson())
+dataPack.save()
