@@ -32,3 +32,5 @@ class DataPack:
         self.meta.createMetaFile(pack_dir)
 
         # Do other stuff
+
+        return pack_dir

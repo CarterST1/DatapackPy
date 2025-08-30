@@ -15,7 +15,7 @@ class PackMeta:
             self,
             pack: DataPack,
             description: str = 'My First DataPack'
-        ) -> None:
+        ):
 
         self.pack = pack
         self.description = description
@@ -23,7 +23,7 @@ class PackMeta:
         if packFormat:
             self.pack_format = packFormat
         else:
-            raise NotImplemented
+            raise ValueError(f"Invalid game version: {self.pack.game_version}")
 
     def toJson(self):
         rawDict = {
@@ -38,3 +38,4 @@ class PackMeta:
     def createMetaFile(self, pack_dir: Path):
         mcMeta = Path(pack_dir / 'pack.mcmeta')
         mcMeta.write_text(self.toJson())
+        return mcMeta
