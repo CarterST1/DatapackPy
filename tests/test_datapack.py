@@ -3,8 +3,8 @@ from pathlib import Path
 import shutil
 import pytest
 
-from modules.datapack import DataPack
-from modules.game_version import GameVersion
+from datapackpy.datapack import DataPack
+from datapackpy.internal.game_version import GameVersion
 
 def test_datapack_supports_tuple():
     datapack = DataPack((1, 21, 8), 'cartermods', 'cst')

@@ -3,11 +3,11 @@ from pathlib import Path
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from modules.datapack import DataPack
+    from datapackpy.datapack import DataPack
 
 import json
-from modules import utils
-from modules.game_version import GameVersion
+from datapackpy.internal import utils
+from datapackpy.internal.game_version import GameVersion
 
 
 class PackMeta:

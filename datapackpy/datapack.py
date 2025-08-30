@@ -1,9 +1,9 @@
 from pathlib import Path
 import shutil
 from typing import final
-from modules.game_version import GameVersion
-from modules import utils
-from modules.pack_meta import PackMeta
+from datapackpy.internal.game_version import GameVersion
+from datapackpy.internal import utils
+from datapackpy.internal.pack_meta import PackMeta
 
 class DataPack:
     """A collection of data used to configure a number of features of Minecraft"""

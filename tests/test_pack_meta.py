@@ -3,10 +3,10 @@ from pathlib import Path
 import shutil
 import pytest
 
-from modules import utils
-from modules.datapack import DataPack
-from modules.game_version import GameVersion
-from modules.pack_meta import PackMeta
+from datapackpy.internal import utils
+from datapackpy.datapack import DataPack
+from datapackpy.internal.game_version import GameVersion
+from datapackpy.internal.pack_meta import PackMeta
 
 @pytest.fixture
 def sample_datapack():

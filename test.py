@@ -1,6 +1,6 @@
-from modules.datapack import DataPack
-from modules.game_version import GameVersion
-import modules.utils as utils
+from datapackpy.datapack import DataPack
+from datapackpy.internal.game_version import GameVersion
+import datapackpy.internal.utils as utils
 
 print(utils.convertFromResourceLocation('minecraft/villager'))
 

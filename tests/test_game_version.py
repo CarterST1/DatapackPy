@@ -1,6 +1,6 @@
 import pytest
 
-from modules.game_version import GameVersion
+from datapackpy.internal.game_version import GameVersion
 
 def test_default_construction():
     version = GameVersion()

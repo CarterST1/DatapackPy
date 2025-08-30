@@ -1,6 +1,6 @@
 import pytest
-from modules.game_version import GameVersion
-from modules.utils import LEGAL_CHARS, PACK_VERSIONS, convertFromResourceLocation, getPackFormatId, getPackFormatRange, isLegalChar, isValidToConvert, formatWithNamespace
+from datapackpy.internal.game_version import GameVersion
+from datapackpy.internal.utils import LEGAL_CHARS, PACK_VERSIONS, convertFromResourceLocation, getPackFormatId, getPackFormatRange, isLegalChar, isValidToConvert, formatWithNamespace
 
 def test_isLegalChar():
     for char in LEGAL_CHARS:

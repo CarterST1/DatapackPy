@@ -1,6 +1,6 @@
 """Contains utilities used by the datapack system"""
 from typing import TypeAlias
-from modules.game_version import GameVersion
+from datapackpy.internal.game_version import GameVersion
 
 Version: TypeAlias = GameVersion | tuple[int, int, int] | tuple[int, int]
 
