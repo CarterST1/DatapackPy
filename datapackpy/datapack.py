@@ -8,8 +8,8 @@ from datapackpy.internal.pack_meta import PackMeta
 class DataPack:
     """A collection of data used to configure a number of features of Minecraft"""
     def __init__(self, version: utils.Version, name: str, namespace: str) -> None:
-        self.name = name.lower()
-        self.namespace = namespace
+        self.name = utils.slugify(name)
+        self.namespace = utils.slugify(namespace)
         if isinstance(version, tuple):
             version = GameVersion.fromTuple(version)
         self.game_version = version
