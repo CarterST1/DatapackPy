@@ -6,6 +6,7 @@ def test_isLegalChar():
         assert isLegalChar(char)
 
     assert isLegalChar('A') == False
+    assert isLegalChar('ABC') == False
 
 def test_isValidToConvert():
     location = 'minecraft:empty'
