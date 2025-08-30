@@ -91,3 +91,16 @@ def getPackFormatId(version: GameVersion):
 
 def slugify(data: str) -> str:
     return data.lower().replace(" ", "_")
+
+__all__ = [
+    'Version',
+    'LEGAL_CHARS',
+    'isLegalChar',
+    'isValidToConvert',
+    'formatWithNamespace',
+    'convertFromResourceLocation',
+    'PACK_VERSIONS',
+    'getPackFormatRange',
+    'getPackFormatId',
+    'slugify'
+]

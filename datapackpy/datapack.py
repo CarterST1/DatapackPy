@@ -37,3 +37,5 @@ class DataPack:
     
     def set_meta(self, meta: PackMeta):
         self.meta = meta
+
+__all__ = ['DataPack']

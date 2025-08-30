@@ -44,3 +44,5 @@ class GameVersion:
         if other is NotImplemented:
             return NotImplemented
         return (self.major, self.minor, self.patch) < (other.major, other.minor, other.patch)
+    
+__all__ = ['GameVersion']

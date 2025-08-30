@@ -39,3 +39,5 @@ class PackMeta:
         mcMeta = Path(pack_dir / 'pack.mcmeta')
         mcMeta.write_text(self.toJson())
         return mcMeta
+    
+__all__ = ['PackMeta']

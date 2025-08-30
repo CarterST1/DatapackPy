@@ -8,6 +8,11 @@ from .internal import game_version, pack_meta, utils
 DataPack = datapack.DataPack
 GameVersion = game_version.GameVersion
 
+__all__ = [
+    "DataPack",
+    "GameVersion",
+]
+
 # Clean up namespace (like pygame does)
 del datapack
 del game_version
