@@ -5,7 +5,7 @@ from typing import final
 from deprecated import deprecated
 from datapackpy.internal.game_version import GameVersion
 from datapackpy.internal import utils
-from datapackpy.internal.pack_meta import PackMeta
+from datapackpy.components.pack_meta import PackMeta
 
 __all__ = ['DataPack']
 

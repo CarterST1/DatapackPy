@@ -1,6 +1,6 @@
 """Contains utilities used by the datapack system"""
 from typing import TypeAlias
-from datapackpy.core.function import Function
+from datapackpy.components.function import Function
 from datapackpy.internal.game_version import GameVersion
 
 __all__ = [

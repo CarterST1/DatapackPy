@@ -1,7 +1,7 @@
 from pathlib import Path
 import shutil
 from typing import TYPE_CHECKING
-from datapackpy.core.function import Function
+from datapackpy.components.function import Function
 from datapackpy.internal.utils import Component
 
 if TYPE_CHECKING:

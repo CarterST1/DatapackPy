@@ -6,7 +6,7 @@ import pytest
 from datapackpy.internal import utils
 from datapackpy.datapack import DataPack
 from datapackpy.internal.game_version import GameVersion
-from datapackpy.internal.pack_meta import PackMeta
+from datapackpy.components.pack_meta import PackMeta
 
 @pytest.fixture
 def sample_datapack():
