@@ -1,5 +1,6 @@
 """Contains utilities used by the datapack system"""
 from typing import TypeAlias
+from datapackpy.core.function import Function
 from datapackpy.internal.game_version import GameVersion
 
 __all__ = [
@@ -16,6 +17,10 @@ __all__ = [
 ]
 
 Version: TypeAlias = GameVersion | tuple[int, int, int] | tuple[int, int]
+"""A spcefic version for the game"""
+
+Component: TypeAlias = Function
+"""The different types of plugins the datapack supports and exports"""
 
 LEGAL_CHARS = '0123456789abcdefghijklmnopqrstuvwxyz_.'
 
