@@ -12,7 +12,7 @@ class Export:
 
     def add_item(self, item: Component):
         if not isinstance(item, Component):
-            raise ValueError(f'Item of type {type(item)} is not a Component')
+            raise ValueError(f'Item of type {str(type(item))} is not a Component')
         if item in self.items:
             print(f'{type(item).__name__} already exists')
             return
@@ -20,7 +20,7 @@ class Export:
 
     def remove_item(self, item: Component):
         if not isinstance(item, Component):
-            raise ValueError(f'Item of type {type(item)} is not a Component')
+            raise ValueError(f'Item of type {str(type(item))} is not a Component')
         if not item in self.items:
             print(f'{type(item)} isn\'t in cache')
             return
