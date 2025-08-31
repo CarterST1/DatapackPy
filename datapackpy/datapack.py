@@ -18,10 +18,24 @@ class DataPack:
             version = GameVersion.fromTuple(version)
         self.game_version = version
 
+        self.components: list[utils.Component] = []
+
         self.meta = PackMeta(self)
 
-    def __str__(self) -> str:
-        return f"DataPack[{self.namespace} | {self.game_version} | format={self.meta.pack_format}]"
+    def __repr__(self) -> str:
+        # header with namespace, version, and pack format
+        string = f"<DataPack '{self.namespace}' | {self.game_version}@format={self.meta.pack_format} | "
+
+        # preview first 5 components
+        preview_count = 5
+        component_preview = ', '.join(
+            f"<{c.__class__.__name__} '{c.name}'>" for c in self.components[:preview_count]
+        )
+        if len(self.components) > preview_count:
+            component_preview += f", ... (+{len(self.components) - preview_count} more)"
+
+        string += f"{len(self.components)} components: {component_preview}>"
+        return string
     
     @final
     @deprecated(reason='Use `export.py` functions instead')
