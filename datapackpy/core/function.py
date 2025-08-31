@@ -1,10 +1,10 @@
 from pathlib import Path
-from datapackpy.internal.utils import slugify
 
 __all__ = ['Function']
 
 class Function:
     def __init__(self, name: str):
+        from datapackpy.internal.utils import slugify
         self.name = slugify(name)
         self.commands: list[str] = []
 
