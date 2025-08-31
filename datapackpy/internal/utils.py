@@ -54,19 +54,19 @@ def formatWithNamespace(namespace: str, path: str):
             return False, ''
     return True, namespace + ':' + path
 
-def convertFromResourceLocation(location: str):
+def convertFromResourceLocation(location: str) -> tuple[bool, str, list[str]]:
     """Converts a resource location to a resolved namespace and resolved path"""
     if not isValidToConvert(location):
-        return False, '', ''
+        return False, '', []
     
     splitLocation = location.split(':')
     resolvedNamespace = splitLocation[0]
     if not resolvedNamespace:
         resolvedNamespace = 'minecraft'
 
-    resovedPath = splitLocation[1]
+    resovedPaths = splitLocation[1].split('/')
 
-    return True, resolvedNamespace, resovedPath
+    return True, resolvedNamespace, resovedPaths
 
 PACK_VERSIONS = {
     '4': {'minimum': (1, 13, 0), 'maximum': (1, 14, 4)},
