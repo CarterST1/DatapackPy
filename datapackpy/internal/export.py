@@ -5,7 +5,7 @@ if TYPE_CHECKING:
     from datapackpy.datapack import DataPack
 
 class Export:
-    def __init__(self, datapack: DataPack):
+    def __init__(self, datapack: 'DataPack'):
         self.datapack = datapack
         self.export_location = 'dist'
         self.items: list[Component] = []
