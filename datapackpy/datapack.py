@@ -3,9 +3,10 @@ import shutil
 from typing import final
 
 from deprecated import deprecated
+from datapackpy.internal.component import Component
 from datapackpy.internal.game_version import GameVersion
 from datapackpy.internal import utils
-from datapackpy.components.pack_meta import PackMeta
+from datapackpy.internal.pack_registry import PackRegistry
 
 __all__ = ['DataPack']
 
@@ -17,44 +18,44 @@ class DataPack:
         if isinstance(version, tuple):
             version = GameVersion.fromTuple(version)
         self.game_version = version
+        self.export_dir = 'dist'
+        self.registry = PackRegistry()
 
-        self.components: list[utils.Component] = []
-
+        from datapackpy.components.pack_meta import PackMeta
         self.meta = PackMeta(self)
 
+    def add_component(self, component: Component):
+        """Manually add a component (optional, usually auto-registered)."""
+        self.registry.add(component)
+
+    def build(self):
+        """Export all components to disk."""
+        dist_path = Path(self.export_dir)
+        if dist_path.exists():
+            import shutil
+            shutil.rmtree(dist_path, ignore_errors=True)
+        dist_path.mkdir(parents=True, exist_ok=True)
+
+        pack_path = self.get_pack_path()
+
+        # Export all components
+        for component in self.registry.all_components():
+            if not component.is_empty():
+                component.export(pack_path)
+            else:
+                print(f"Skipping empty component: {component}")
+
     def __repr__(self) -> str:
-        header = f"<DataPack '{self.namespace}' | {self.game_version}@format={self.meta.pack_format}"
+        comps = self.registry.all_components()
+        comp_preview = ", ".join(f"<{c.__class__.__name__} '{c.name}'>" for c in comps[:5])
+        if len(comps) > 5:
+            comp_preview += f", ... (+{len(comps)-5} more)"
+        return f"<DataPack '{self.namespace}' | {len(comps)} components: {comp_preview}>"
     
-        if not self.components:
-            return f"{header} | 0 components>"
-        
-        # preview first 5 components
-        preview_count = 5
-        component_preview = ', '.join(
-            f"<{c.__class__.__name__} '{c.name}'>" for c in self.components[:preview_count]
-        )
-        if len(self.components) > preview_count:
-            component_preview += f", ... (+{len(self.components) - preview_count} more)"
-        
-        return f"{header} | {len(self.components)} components: {component_preview}>"
+    def get_namespace_path(self):
+        dist_path = Path(self.export_dir)
+        return dist_path / self.name / 'data' / self.namespace
     
-    @final
-    @deprecated(reason='Use `export.py` functions instead')
-    def save(self, path: str = 'dist'):
-        """Deprecated: use `export.py` functions instead"""
-        dist_dir = Path(path)
-        if dist_dir.exists() and dist_dir.is_dir():
-            shutil.rmtree(dist_dir, ignore_errors=True)
-        dist_dir.mkdir()
-
-        pack_dir = Path(dist_dir / self.name)
-        pack_dir.mkdir()
-
-        self.meta.createMetaFile(pack_dir)
-
-        # Do other stuff
-
-        return pack_dir
-    
-    def set_meta(self, meta: PackMeta):
-        self.meta = meta
+    def get_pack_path(self):
+        dist_path = Path(self.export_dir)
+        return dist_path / self.name

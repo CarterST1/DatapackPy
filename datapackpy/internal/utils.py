@@ -1,6 +1,5 @@
 """Contains utilities used by the datapack system"""
 from typing import TypeAlias
-from datapackpy.components.function import Function
 from datapackpy.internal.game_version import GameVersion
 
 __all__ = [
@@ -19,9 +18,6 @@ __all__ = [
 Version: TypeAlias = GameVersion | tuple[int, int, int] | tuple[int, int]
 """A spcefic version for the game"""
 
-Component: TypeAlias = Function
-"""The different types of plugins the datapack supports and exports"""
-
 LEGAL_CHARS = '0123456789abcdefghijklmnopqrstuvwxyz_.'
 
 def isLegalChar(char: str):
@@ -29,7 +25,7 @@ def isLegalChar(char: str):
     if len(char) != 1:
         return False
     
-    if char in list(LEGAL_CHARS):
+    if char in list(LEGAL_CHARS) or char == '/':
         return True
     
     return False

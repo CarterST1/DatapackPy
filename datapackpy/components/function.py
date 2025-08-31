@@ -1,11 +1,16 @@
 from pathlib import Path
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from datapackpy.datapack import DataPack
+
+from datapackpy.internal.component import Component
 
 __all__ = ['Function']
 
-class Function:
-    def __init__(self, name: str):
-        from datapackpy.internal.utils import slugify
-        self.name = slugify(name)
+class Function(Component):
+    def __init__(self, name: str, datapack: 'DataPack'):
+        super().__init__(datapack, name, 'function')
         self.commands: list[str] = []
 
     def add_command(self, command: str):
@@ -15,14 +20,10 @@ class Function:
     def add_commands(self, *commands: str):
         """Add multiple commands at once."""
         self.commands.extend(commands)
-
-    def __str__(self) -> str:
-        """Return the function as a string ready to write to a .mcfunction file."""
-        return "\n".join(self.commands)
     
     def __repr__(self) -> str:
         if not self.commands:
-            return f"<Function '{self.name}' | 0 commands>"
+            return f"<Function '{self.resource_location}' | 0 commands>"
 
         # preview first 3 commands
         preview_count = 3
@@ -35,10 +36,15 @@ class Function:
         if len(self.commands) > preview_count:
             preview += f", ... (+{len(self.commands) - preview_count} more)"
         
-        return f"<Function '{self.name}' | {len(self.commands)} commands: {preview}>"
+        return f"<Function '{self.resource_location}' | {len(self.commands)} commands: {preview}>"
 
-    def create_function_file(self, path_dir: Path):
-        function_file = Path(path_dir / f'{self.name}.mcfunction')
-        function_file.write_text(str(self))
+    def export(self, base_dir: Path):
+        """Writes this function to a .mcfunction file."""
+        func_path = self.export_path.with_suffix('.mcfunction')
+        func_path.parent.mkdir(parents=True, exist_ok=True)
 
-        return function_file
+        with func_path.open("w", encoding="utf-8") as f:
+            f.write("\n".join(self.commands))
+
+    def is_empty(self) -> bool:
+        return not self.commands
