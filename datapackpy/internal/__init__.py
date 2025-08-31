@@ -14,6 +14,7 @@ This package exposes only the public-facing APIs:
 
 from .game_version import GameVersion
 from .pack_meta import PackMeta
+from .export import Export
 from . import utils  # keep utils as a submodule
 
-__all__ = ["GameVersion", "PackMeta", "utils"]
+__all__ = ["GameVersion", "PackMeta", "Export", "utils"]
