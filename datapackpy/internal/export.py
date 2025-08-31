@@ -1,4 +1,7 @@
+from pathlib import Path
+import shutil
 from typing import TYPE_CHECKING
+from datapackpy.core.function import Function
 from datapackpy.internal.utils import Component
 
 if TYPE_CHECKING:
@@ -25,3 +28,23 @@ class Export:
             print(f'{type(item)} isn\'t in cache')
             return
         self.items.remove(item)
+
+    def build(self, path: Path | str = 'dist'):
+        dist_path = Path(path)
+        if dist_path.exists() and dist_path.is_dir():
+            shutil.rmtree(dist_path, ignore_errors=True)
+        dist_path.mkdir()
+        
+        datapack_dir = dist_path / self.datapack.name
+        data_dir = datapack_dir / "data"
+        namespace_dir = data_dir / self.datapack.namespace
+        function_dir = namespace_dir / "function"
+
+        self.datapack.meta.createMetaFile(datapack_dir)
+
+        for component in self.items:
+            if isinstance(component, Function):
+                if len(component.commands) == 0:
+                    print('Skipped Function with no commands')
+                    continue
+                component.create_function_file(function_dir)
