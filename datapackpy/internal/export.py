@@ -40,6 +40,12 @@ class Export:
         namespace_dir = data_dir / self.datapack.namespace
         function_dir = namespace_dir / "function"
 
+        datapack_dir.mkdir(exist_ok=True)
+        data_dir.mkdir(exist_ok=True)
+        namespace_dir.mkdir(exist_ok=True)
+        function_dir.mkdir(exist_ok=True)
+
+
         self.datapack.meta.createMetaFile(datapack_dir)
 
         for component in self.items:
