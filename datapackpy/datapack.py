@@ -44,6 +44,7 @@ class DataPack:
                 component.export(pack_path)
             else:
                 print(f"Skipping empty component: {component}")
+        return pack_path
 
     def __repr__(self) -> str:
         comps = self.registry.all_components()

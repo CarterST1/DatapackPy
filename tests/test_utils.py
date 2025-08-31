@@ -22,9 +22,9 @@ def test_formatWithNamespace():
     assert formatWithNamespace(namespace, path.upper()) == (False, '')
 
 def test_convertFromResourceLocation():
-    assert convertFromResourceLocation('minecraft:empty') == (True, 'minecraft', 'empty')
-    assert convertFromResourceLocation(':empty') == (True, 'minecraft', 'empty')
-    assert convertFromResourceLocation('minecraft::empty') == (False, '', '')
+    assert convertFromResourceLocation('minecraft:empty') == (True, 'minecraft', ['empty'])
+    assert convertFromResourceLocation(':empty') == (True, 'minecraft', ['empty'])
+    assert convertFromResourceLocation('minecraft::empty') == (False, '', [])
 
 def test_getPackFormatRange():
     assert getPackFormatRange(85) == ((1, 21, 9), (1, 21, 9))

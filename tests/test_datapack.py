@@ -17,14 +17,15 @@ def test_datapack_supports_GameVersion():
 def test_datapack_str():
     datapack = DataPack((1, 21, 8), 'cartermods', 'cst')
     datapackStr = str(datapack)
-    assert datapackStr == '<DataPack \'cst\' | v1.21.8@format=81 | 0 components>'
+    assert datapackStr == '<DataPack \'cst\' | 1 components: <PackMeta \'cst\'>>'
 
 def test_datapack_save():
     datapack = DataPack((1, 21, 8), 'cartermods', 'cst')
     tempPath = Path(os.path.expandvars('%TEMP%'))
     path = Path(tempPath / 'tests')
 
-    result = datapack.save(str(path))
+    datapack.export_dir = str(path)
+    result = datapack.build()
     assert result.exists()
     assert result.is_dir()
 
