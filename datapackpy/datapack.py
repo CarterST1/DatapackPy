@@ -1,6 +1,8 @@
 from pathlib import Path
 import shutil
 from typing import final
+
+from deprecated import deprecated
 from datapackpy.internal.game_version import GameVersion
 from datapackpy.internal import utils
 from datapackpy.internal.pack_meta import PackMeta
@@ -22,7 +24,9 @@ class DataPack:
         return f"DataPack[{self.namespace} | {self.game_version} | format={self.meta.pack_format}]"
     
     @final
+    @deprecated(reason='Use `export.py` functions instead')
     def save(self, path: str = 'dist'):
+        """Deprecated: use `export.py` functions instead"""
         dist_dir = Path(path)
         if dist_dir.exists() and dist_dir.is_dir():
             shutil.rmtree(dist_dir, ignore_errors=True)
