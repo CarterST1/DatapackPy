@@ -17,7 +17,7 @@ def test_datapack_supports_GameVersion():
 def test_datapack_str():
     datapack = DataPack((1, 21, 8), 'cartermods', 'cst')
     datapackStr = str(datapack)
-    assert datapackStr == 'DataPack[cst | v1.21.8 | format=81]'
+    assert datapackStr == '<DataPack \'cst\' | v1.21.8@format=81 | 0 components>'
 
 def test_datapack_save():
     datapack = DataPack((1, 21, 8), 'cartermods', 'cst')
