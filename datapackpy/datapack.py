@@ -31,12 +31,12 @@ class DataPack:
     def build(self):
         """Export all components to disk."""
         dist_path = Path(self.export_dir)
-        if dist_path.exists():
-            import shutil
-            shutil.rmtree(dist_path, ignore_errors=True)
         dist_path.mkdir(parents=True, exist_ok=True)
 
         pack_path = self.get_pack_path()
+        if pack_path.exists():
+            import shutil
+            shutil.rmtree(pack_path, ignore_errors=True)
 
         # Export all components
         for component in self.registry.all_components():
