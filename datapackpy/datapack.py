@@ -2,7 +2,6 @@ from pathlib import Path
 import shutil
 from typing import final
 
-from deprecated import deprecated
 from datapackpy.internal.component import Component
 from datapackpy.internal.game_version import GameVersion
 from datapackpy.internal import utils
