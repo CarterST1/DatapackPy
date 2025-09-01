@@ -38,7 +38,7 @@ class Function(Component):
         
         return f"<Function '{self.resource_location}' | {len(self.commands)} commands: {preview}>"
 
-    def export(self, base_dir: Path):
+    def export(self):
         """Writes this function to a .mcfunction file."""
         func_path = self.export_path.with_suffix('.mcfunction')
         func_path.parent.mkdir(parents=True, exist_ok=True)

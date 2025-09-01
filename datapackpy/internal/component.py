@@ -34,7 +34,7 @@ class Component(ABC):
         return Path(self.datapack.get_pack_path()) / 'data' / path_parts[0] / Path(*path_parts[1:])
     
     @abstractmethod
-    def export(self, base_dir: Path):
+    def export(self):
         """Export this component to disk."""
         pass
 
