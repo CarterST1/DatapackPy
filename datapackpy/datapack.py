@@ -40,7 +40,7 @@ class DataPack:
         # Export all components
         for component in self.registry.all_components():
             if not component.is_empty():
-                component.export()
+                component.export(pack_path)
             else:
                 print(f"Skipping empty component: {component}")
         return pack_path
