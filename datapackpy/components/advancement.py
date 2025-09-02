@@ -1,4 +1,5 @@
 from enum import Enum
+import json
 from typing import Optional
 
 from datapackpy.datapack import DataPack
@@ -25,3 +26,32 @@ class Advancement(Component):
     
     def __repr__(self) -> str:
         return f'<Advancement \'{self.resource_location}\'>'
+    
+    def is_empty(self) -> bool:
+        return False
+    
+    def to_json(self):
+        raw_json = {
+            'display': {
+                'icon': {'id': self.icon_id},
+                'title': self.title,
+                'description': self.description,
+                'frame': self.frame.name,
+                'show_toast': self.show_toast,
+                'announce_to_chat': self.announce_to_chat,
+                'hidden': self.hidden
+            },
+            'criteria': {
+                'requirement': 'minecraft:impossible'
+            }
+        }
+        
+        return json.dumps(raw_json, indent=2)
+    
+    def export(self):
+        """Writes this advancement to a .json file."""
+        adv_path = self.export_path.with_suffix('.json')
+        adv_path.parent.mkdir(parents=True, exist_ok=True)
+
+        with adv_path.open("w", encoding="utf-8") as f:
+            f.write(self.to_json())
