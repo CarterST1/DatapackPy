@@ -22,3 +22,6 @@ class Advancement(Component):
         self.show_toast = True
         self.announce_to_chat = True
         self.hidden = False
+    
+    def __repr__(self) -> str:
+        return f'<Advancement \'{self.resource_location}\'>'
